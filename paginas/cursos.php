@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
+<?php if (!empty($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] == 1 || $_SESSION['tipo_utilizador'] == 3)) : ?>  
 <?php  $sql = "SELECT c.*
             FROM curso c
             WHERE NOT EXISTS (
@@ -9,7 +10,7 @@
                 AND i.nome = '{$_SESSION['nome']}'
             )";
         $result = mysqli_query($conn, $sql);?>
-<?php if (!empty($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] == 1 || $_SESSION['tipo_utilizador'] == 3)) : ?>           
+         
 <html lang="pt">
 <head>
     <meta charset="UTF-8">

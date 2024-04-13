@@ -7,5 +7,6 @@
     </head>
     <body>
         <?php include 'cabecalho.php'?>   
+        <label>GOOD MORNING VIETNAMMM </label> 
     </body>
 </html>

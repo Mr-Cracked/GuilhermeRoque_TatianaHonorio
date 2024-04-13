@@ -1,8 +1,9 @@
 <?php
 include '../basedados/basedados.h';
-
-// Obter os dados do formulário
 session_start();
+if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0){ 
+// Obter os dados do formulário
+
 $existepass = false;
 if (!empty($_POST['password'])){
     $existepass = true;
@@ -54,4 +55,8 @@ $morada = $_POST['morada'];
             <strong>Erro!</strong> <a href="editarPerfilformulario.php" class="alert-link">Erro ao editar!!!</div>';
         }
     }
+}
+else{
+    header("Location:Erro.php");
+}
 ?>
