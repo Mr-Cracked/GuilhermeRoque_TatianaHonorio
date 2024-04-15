@@ -14,7 +14,7 @@
         <div class="card shadow-lg p-3 mb-5 bg-white rounded w-75">
             <div class="card-body">
                 <h4 class="card-title text-center">Perfil</h4>
-                As suas informações
+                TESTE
                 <br>
                 <form id="form1" name="form1" method="post" action="editarPerfil.php">
                     <div class="form-group">
