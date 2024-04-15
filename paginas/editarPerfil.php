@@ -47,7 +47,7 @@ $morada = $_POST['morada'];
             echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-success">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Erro!</strong> <a href="editarPerfilformulario.php" class="alert-link">Sucesso!!!</div>';
+            <strong></strong> <a href="perfil.php" class="alert-link">Sucesso!!!</div>';
         } else {
             echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-danger">

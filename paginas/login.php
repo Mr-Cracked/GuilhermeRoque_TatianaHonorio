@@ -3,14 +3,6 @@ include '../basedados/basedados.h';
 
 session_start();
 // Obter os dados do formulário
-if (empty($_POST['username']) || empty($_POST['password'])){
-    echo '<link rel="stylesheet" href="bootstrap.css">
-            <div class="alert alert-dismissible alert-danger">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Erro!</strong> <a href="loginformulario.php" class="alert-link">Insira as credenciais
-        </div>';
-        exit();
-}
 $nome = $_POST['username'];
 $password = $_POST['password']; // A senha ainda não está encriptada
 

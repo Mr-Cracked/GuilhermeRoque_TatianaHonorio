@@ -1,6 +1,5 @@
 <?php
 include '../basedados/basedados.h';
-
 // Obter os dados do formulário
 
 $id = $_GET['id_curso'];
