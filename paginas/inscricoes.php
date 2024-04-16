@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
-<?php  $sql = "SELECT c.*
-            FROM curso c
-            WHERE NOT EXISTS (
-                SELECT 1
-                FROM inscricao i
-                WHERE i.id_curso = c.id_curso
-                AND i.nome = '{$_SESSION['nome']}'
-            )";
+<?php  $sql = "SELECT i.nome, c.nome, i.descricao, i.id_curso
+                FROM inscricao i INNER JOIN curso c
+                ON i.id_curso = c.id_curso
+                WHERE i.nome = '{$_SESSION['nome']}'";
         $result = mysqli_query($conn, $sql);?>
 <?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
 <html lang="pt">
@@ -23,9 +19,9 @@
                     <thead>
                         <tr>
                             <th scope="col">Nome do curso</th>
-                            <th scope="col">Vagas</th>
-                            <th scope="col">Data de Início</th>
-                            <th scope="col">Data de Conclusão</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,9 +31,10 @@
                             ?>
                             <tr class="table-active">
                                 <th scope="row"><?php echo $row['nome']; ?></th>
-                                <td><?php echo $row['vagas']; ?></td>
-                                <td><?php echo $row['data_inicio']; ?></td>
-                                <td><?php echo $row['data_fim']; ?></td>
+                                <td><?php echo $row['descricao']; ?></td>
+                                <td> <a href="editarInscricaoformulario.php?id=<?php echo $row['id_curso']; ?>">Editar</a></td>
+                                <td> <a href="eliminarInscricaoformulario.php?id=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
+
                             </tr>
                             <?php
                         }

@@ -64,7 +64,7 @@
                                     
                                 } else{
                                     ?>
-                                    <td> <a href="inscricaoformulario.php">Inscrever-se</a></td>
+                                    <td> <a href="inscricaoformulario.php?id=<?php echo $row['id_curso']; ?>">Inscrever-se</a></td>
                                     <?php
                                 }
                             ?>
