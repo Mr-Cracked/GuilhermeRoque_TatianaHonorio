@@ -29,11 +29,11 @@
                             <?php
                             // Opções do nível de acesso
                             $opcoesNivelAcesso = array(
-                                "-1" => "Nível -1",
-                                "0" => "Nível 0",
-                                "1" => "Nível 1",
-                                "2" => "Nível 2",
-                                "3" => "Nível 3"
+                                "-1" => "Eliminado",
+                                "0" => "Por aceitar",
+                                "1" => "Aluno",
+                                "2" => "Docente",
+                                "3" => "Administrador"
                             );
 
                             // Obtém o valor atual do nível de acesso

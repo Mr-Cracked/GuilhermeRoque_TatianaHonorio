@@ -2,6 +2,11 @@
 include '../basedados/basedados.h';
 
 // Obter os dados do formulário
+if(empty($_POST['nivelacesso'])){
+    $nivel = null;
+}else{
+    $nivel = $_POST['nivelacesso'];
+}
 $nome = $_POST['username'];
 $password = $_POST['password']; // A senha ainda não está encriptada
 $email = $_POST['email'];
@@ -22,7 +27,8 @@ if (mysqli_num_rows($result) > 0) {
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>Erro!</strong> <a href="registarformulario.php" class="alert-link">Utilizador já existe</div>';
 } else {
-    // Inserir novo utilizador se não existir
+    if(empty($nivel)){
+        // Inserir novo utilizador se não existir
     $sql = "INSERT INTO utilizador (nome, password, email, telemovel, morada) VALUES ('$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
     $result = mysqli_query($conn, $sql);
 
@@ -32,5 +38,18 @@ if (mysqli_num_rows($result) > 0) {
     } else {
         echo '<font color="red">Falha ao inserir utilizador!</font>';
     }
+    }else{
+        // Inserir novo utilizador se não existir
+    $sql = "INSERT INTO utilizador (tipo_utilizador,nome, password, email, telemovel, morada) VALUES ('$nivel','$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
+    $result = mysqli_query($conn, $sql);
+
+    // Verificar se a inserção foi bem-sucedida
+    if ($result) {
+        echo '<font color="green">Utilizador inserido com sucesso!</font>';
+    } else {
+        echo '<font color="red">Falha ao inserir utilizador!</font>';
+    }
+    }
+    
 }
 ?>

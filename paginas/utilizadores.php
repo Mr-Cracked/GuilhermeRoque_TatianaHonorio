@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
+    
             <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+            
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -47,8 +49,10 @@
                         }
                         ?>
                     </tbody>
+                    
                 </table>
             </div>
+            <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarAlunoformulario.php">Adicionar</button></a> </div>
         </body>
 </html>
 <?php else: header("Location:Erro.php");?>
