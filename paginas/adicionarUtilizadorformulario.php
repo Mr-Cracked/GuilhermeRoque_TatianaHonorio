@@ -40,31 +40,31 @@
 
                     <div class="form-group">
                         <label for="username">Nome de Utilizador:</label>
-                        <input type="text" class="form-control" name="username" placeholder="Insira o seu utilizador">
+                        <input type="text" class="form-control" name="username" placeholder="Insira o seu utilizador" required>
                     </div>
                     <br>
 
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" name="password" placeholder="Insira a sua password">
+                        <input type="password" class="form-control" name="password" placeholder="Insira a sua password" required>
                     </div>
                     <br>
 
                     <div class="form-group">
                         <label for="username">Morada:</label>
-                        <input type="text" class="form-control" name="morada" placeholder="Insira a sua morada">
+                        <input type="text" class="form-control" name="morada" placeholder="Insira a sua morada" required>
                     </div>
                     <br>
                     
                     <div class="form-group">
                         <label for="username">Email:</label>
-                        <input type="email" class="form-control" name="email" placeholder="Insira o seu Email">
+                        <input type="email" class="form-control" name="email" placeholder="Insira o seu Email" required>
                     </div>
                     <br>
 
                     <div class="form-group">
                         <label for="username">Telemóvel:</label>
-                        <input type="number" class="form-control" name="telemovel" placeholder="Insira o nº de telemóvel">
+                        <input type="number" class="form-control" name="telemovel" placeholder="Insira o nº de telemóvel" required>
                     </div>
                     <br>
                     <input type="submit" name="Submit" value="registar" class="btn btn-primary"/><br>

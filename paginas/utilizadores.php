@@ -52,7 +52,7 @@
                     
                 </table>
             </div>
-            <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarAlunoformulario.php">Adicionar</button></a> </div>
+            <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarUtilizadorformulario.php">Adicionar</button></a> </div>
         </body>
 </html>
 <?php else: header("Location:Erro.php");?>

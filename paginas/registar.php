@@ -1,6 +1,6 @@
 <?php
 include '../basedados/basedados.h';
-
+session_start();
 // Obter os dados do formulário
 if(empty($_POST['nivelacesso'])){
     $nivel = null;
@@ -22,10 +22,18 @@ $result = mysqli_query($conn, $sql);
 
 // Verificar se a consulta foi bem-sucedida e se já existe um utilizador com o mesmo nome
 if (mysqli_num_rows($result) > 0) {
-    echo '<link rel="stylesheet" href="bootstrap.css">
-    <div class="alert alert-dismissible alert-danger">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>Erro!</strong> <a href="registarformulario.php" class="alert-link">Utilizador já existe</div>';
+    if($_SESSION['tipo_utilizador'] == 3){
+        echo '<link rel="stylesheet" href="bootstrap.css">
+        <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Erro!</strong> <a href="adicionarUtilizadorformulario.php" class="alert-link">Utilizador já existe</div>';
+    }else{
+        echo '<link rel="stylesheet" href="bootstrap.css">
+        <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Erro!</strong> <a href="registarformulario.php" class="alert-link">Utilizador já existe</div>';
+    }
+    
 } else {
     if(empty($nivel)){
         // Inserir novo utilizador se não existir
@@ -34,9 +42,15 @@ if (mysqli_num_rows($result) > 0) {
 
     // Verificar se a inserção foi bem-sucedida
     if ($result) {
-        echo '<font color="green">Utilizador inserido com sucesso!</font>';
+        echo '<link rel="stylesheet" href="bootstrap.css">
+        <div class="alert alert-dismissible alert-sucess">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Erro!</strong> <a href="registarformulario.php" class="alert-link">Sucesso!!!</div>';
     } else {
-        echo '<font color="red">Falha ao inserir utilizador!</font>';
+        echo '<link rel="stylesheet" href="bootstrap.css">
+        <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong></strong> <a href="registarformulario.php" class="alert-link">ERRO!</div>';
     }
     }else{
         // Inserir novo utilizador se não existir
@@ -45,9 +59,15 @@ if (mysqli_num_rows($result) > 0) {
 
     // Verificar se a inserção foi bem-sucedida
     if ($result) {
-        echo '<font color="green">Utilizador inserido com sucesso!</font>';
+        echo '<link rel="stylesheet" href="bootstrap.css">
+        <div class="alert alert-dismissible alert-sucess">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong></strong> <a href="registarformulario.php" class="alert-link">Sucesso!!!</div>';
     } else {
-        echo '<font color="red">Falha ao inserir utilizador!</font>';
+        echo '<link rel="stylesheet" href="bootstrap.css">
+        <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong></strong> <a href="registarformulario.php" class="alert-link">ERRO!</div>';
     }
     }
     
