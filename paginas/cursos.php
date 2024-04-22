@@ -20,6 +20,7 @@
 </head>
 <body>
             <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+                <div class="card-body">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -74,6 +75,9 @@
                         ?>
                     </tbody>
                 </table>
+                <a type="button" class="btn btn-primary" href="adicionarCursoformulario.php">Adicionar</button></a>
+            </div>
+            
             </div>
         </body>
 </html>
