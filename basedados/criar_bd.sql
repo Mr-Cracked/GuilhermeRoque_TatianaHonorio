@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Abr-2024 às 18:01
+-- Tempo de geração: 29-Abr-2024 às 22:03
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -45,8 +45,8 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `nome`, `descricao`, `vagas`, `vagas_preenchidas`, `data_inicio`, `data_fim`, `metodo_selecao`) VALUES
-(1, 'Engenharia Informática', 'Engenharia para a informática', 150, 0, '2024-03-05', '2025-04-09', ''),
-(2, 'Engenhaira do desemprego', 'Em outras palavras artes', 200, 0, '2024-04-02', '2024-10-04', '');
+(1, 'Engenharia Informática', 'Engenharia para a informática', 150, 2, '2024-03-05', '2025-04-09', ''),
+(2, 'Engenhaira do desemprego', 'Em outras palavras artes', 200, 3, '2024-04-02', '2024-10-04', '');
 
 -- --------------------------------------------------------
 
@@ -55,29 +55,30 @@ INSERT INTO `curso` (`id_curso`, `nome`, `descricao`, `vagas`, `vagas_preenchida
 --
 
 CREATE TABLE `inscricao` (
-  `nome` varchar(60) NOT NULL,
-  `id_curso` int(40) NOT NULL
+  `id_utilizador` int(40) NOT NULL,
+  `id_curso` int(40) NOT NULL,
+  `descricao` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `inscricao`
+--
+
+INSERT INTO `inscricao` (`id_utilizador`, `id_curso`, `descricao`) VALUES
+(2, 1, 'ola tenho 88 anos'),
+(2, 2, 'olaaa'),
+(5, 1, 'saf'),
+(5, 2, 'dsa');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `lecionar`
+-- Estrutura da tabela `leciona`
 --
 
-CREATE TABLE `lecionar` (
-  `nome` varchar(100) NOT NULL,
+CREATE TABLE `leciona` (
+  `id_utilizador` int(40) NOT NULL,
   `id_curso` int(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `selecao`
---
-
-CREATE TABLE `selecao` (
-  `metodo_selecao` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -87,6 +88,7 @@ CREATE TABLE `selecao` (
 --
 
 CREATE TABLE `utilizador` (
+  `id_utilizador` int(40) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `password` varchar(100) NOT NULL,
   `morada` varchar(100) NOT NULL,
@@ -99,15 +101,15 @@ CREATE TABLE `utilizador` (
 -- Extraindo dados da tabela `utilizador`
 --
 
-INSERT INTO `utilizador` (`nome`, `password`, `morada`, `email`, `telemovel`, `tipo_utilizador`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', '', '', 0, 3),
-('aluno', 'ca0cd09a12abade3bf0777574d9f987f', 'aluno', 'aluno@gmail.com', 123456789, 1),
-('docente', 'ac99fecf6fcb8c25d18788d14a5384ee', 'fadc', 'fasdfa@gmail.com', 2321421, 2),
-('docente1', '085a4315b710361139bef0018d90ac48', 'fadinhoyauuuuuu', 'fasdfa@gmail.com', 2321421, 2),
-('dsa', 'c20ad4d76fe97759aa27a0c99bff6710', 'sac', 'dsa@cfads.com', 2315, 0),
-('edbhasg', '1558a650b39e1ffa6b715449f44dd475', 'gasgsgg', 'yeet@gmail.com', 225151, 0),
-('feas', '01cfcd4f6b8770febfb40cb906715822', 'vycdavhjac', 'hvcda@hbea.com', 425164789, 0),
-('Guilherme', 'd6ee4e61af68a10f9bb9ee130313881f', 'rua da praca', 'guilherme.roque@ipcbcampus.pt', 973023847, 0);
+INSERT INTO `utilizador` (`id_utilizador`, `nome`, `password`, `morada`, `email`, `telemovel`, `tipo_utilizador`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ola', 'ola@gmail.com', 0, 3),
+(2, 'aluno', 'ca0cd09a12abade3bf0777574d9f987f', 'aluno', 'aluno@gmail.com', 123456789, 1),
+(3, 'docente', 'ac99fecf6fcb8c25d18788d14a5384ee', 'fadc', 'fasdfa@gmail.com', 2321421, 2),
+(4, 'docente1', '085a4315b710361139bef0018d90ac48', 'fadinhoyauuuuuu', 'fasdfa@gmail.com', 2321421, 2),
+(5, 'dsa', '5f039b4ef0058a1d652f13d612375a5b', 'sac', 'dsa@cfads.com', 2315, 1),
+(6, 'edbhasg', 'c4ca4238a0b923820dcc509a6f75849b', 'gasgsgg', 'yeet@gmail.com', 225151, 1),
+(7, 'feas', '01cfcd4f6b8770febfb40cb906715822', 'vycdavhjac', 'hvcda@hbea.com', 425164789, 0),
+(8, 'Guilherme', 'c00425797de3c98e7b32e814b54a6ec5', 'rua da praca', 'guilherme.roque@ipcbcampus.pt', 973023847, 3);
 
 --
 -- Índices para tabelas despejadas
@@ -123,27 +125,14 @@ ALTER TABLE `curso`
 -- Índices para tabela `inscricao`
 --
 ALTER TABLE `inscricao`
-  ADD PRIMARY KEY (`nome`,`id_curso`),
-  ADD KEY `id_cursoFK` (`id_curso`);
-
---
--- Índices para tabela `lecionar`
---
-ALTER TABLE `lecionar`
-  ADD PRIMARY KEY (`nome`,`id_curso`),
+  ADD PRIMARY KEY (`id_utilizador`,`id_curso`),
   ADD KEY `FK_id_curso` (`id_curso`);
-
---
--- Índices para tabela `selecao`
---
-ALTER TABLE `selecao`
-  ADD PRIMARY KEY (`metodo_selecao`);
 
 --
 -- Índices para tabela `utilizador`
 --
 ALTER TABLE `utilizador`
-  ADD PRIMARY KEY (`nome`);
+  ADD PRIMARY KEY (`id_utilizador`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -156,6 +145,12 @@ ALTER TABLE `curso`
   MODIFY `id_curso` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `utilizador`
+--
+ALTER TABLE `utilizador`
+  MODIFY `id_utilizador` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- Restrições para despejos de tabelas
 --
 
@@ -163,15 +158,8 @@ ALTER TABLE `curso`
 -- Limitadores para a tabela `inscricao`
 --
 ALTER TABLE `inscricao`
-  ADD CONSTRAINT `id_cursoFK` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `nome_FK` FOREIGN KEY (`nome`) REFERENCES `utilizador` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `lecionar`
---
-ALTER TABLE `lecionar`
   ADD CONSTRAINT `FK_id_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_nome` FOREIGN KEY (`nome`) REFERENCES `utilizador` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_id_utilizador` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizador` (`id_utilizador`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
