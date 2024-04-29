@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
-<?php  $sql = "SELECT i.nome, c.nome, i.descricao, i.id_curso
+<?php  $sql = "SELECT c.nome, i.descricao, i.id_curso
                 FROM inscricao i INNER JOIN curso c
                 ON i.id_curso = c.id_curso
-                WHERE i.nome = '{$_SESSION['nome']}'";
+                WHERE i.id_utilizador = '{$_SESSION['id_utilizador']}'";
         $result = mysqli_query($conn, $sql);?>
 <?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
 <html lang="pt">

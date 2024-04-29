@@ -12,10 +12,11 @@ if (!empty($_POST['password'])){
 $email = $_POST['email'];
 $telemovel = $_POST['telemovel'];
 $morada = $_POST['morada'];
+$nome = $_POST['morada'];
 
     if($existepass){
         // Atualizar utilizador 
-        $sql = "UPDATE utilizador SET password='$senha_encriptada', email='$email', telemovel='$telemovel', morada='$morada' WHERE nome='$_SESSION[nome]'";
+        $sql = "UPDATE utilizador SET nome='$nome',password='$senha_encriptada', email='$email', telemovel='$telemovel', morada='$morada' WHERE id_utilizador='$_SESSION[id_utilizador]'";
         $result = mysqli_query($conn, $sql);
 
         // Verificar se a atualização foi bem-sucedida
@@ -36,7 +37,7 @@ $morada = $_POST['morada'];
         }
     } else {
         // Atualizar utilizador 
-        $sql = "UPDATE utilizador SET email='$email', telemovel='$telemovel', morada='$morada' WHERE nome='$_SESSION[nome]'";
+        $sql = "UPDATE utilizador SET nome='$nome',email='$email', telemovel='$telemovel', morada='$morada' WHERE id_utilizador='$_SESSION[id_utilizador]'";
         $result = mysqli_query($conn, $sql);
 
         // Verificar se a atualização foi bem-sucedida

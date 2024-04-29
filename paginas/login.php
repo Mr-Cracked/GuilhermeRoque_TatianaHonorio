@@ -23,6 +23,7 @@ $result = mysqli_query($conn, $sql);
     // Verificar se a autenticação foi bem-sucedida
     if ($row['tipo_utilizador'] > 0) {
         $_SESSION['tipo_utilizador']= $row['tipo_utilizador'];
+        $_SESSION['id_utilizador']= $row['id_utilizador'];
         $_SESSION['nome']= $row['nome'];
         $_SESSION['email']= $row['email'];
         $_SESSION['telemovel']= $row['telemovel'];

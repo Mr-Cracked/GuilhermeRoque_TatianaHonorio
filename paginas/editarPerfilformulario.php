@@ -19,7 +19,12 @@
                 <form id="form1" name="form1" method="post" action="editarPerfil.php">
                     <div class="form-group">
                         <label for="username">Nome de Utilizador:</label>
-                        <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['nome']; ?>" readonly disabled>
+                        <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['id_utilizador']; ?>" readonly disabled>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="username">Nome de Utilizador:</label>
+                        <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['nome']; ?>" required>
                     </div>
                     <br>
 

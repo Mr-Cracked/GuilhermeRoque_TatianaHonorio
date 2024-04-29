@@ -49,8 +49,13 @@
                     </div>
                     <br>
                     <div class="form-group">
+                        <label for="id_utilizador">ID:</label>
+                        <input type="text" class="form-control" name="id_utilizador" value="<?php echo $row['id_utilizador']; ?>" readonly>
+                    </div>
+                    <br>
+                    <div class="form-group">
                         <label for="nome">Nome de Utilizador:</label>
-                        <input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>" readonly>
+                        <input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>" required>
                     </div>
                     <br>
 
