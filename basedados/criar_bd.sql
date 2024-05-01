@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Abr-2024 às 22:03
+-- Tempo de geração: 01-Maio-2024 às 17:13
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -45,8 +45,7 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `nome`, `descricao`, `vagas`, `vagas_preenchidas`, `data_inicio`, `data_fim`, `metodo_selecao`) VALUES
-(1, 'Engenharia Informática', 'Engenharia para a informática', 150, 2, '2024-03-05', '2025-04-09', ''),
-(2, 'Engenhaira do desemprego', 'Em outras palavras artes', 200, 3, '2024-04-02', '2024-10-04', '');
+(27, 'Engenharia Informática', 'Informática', 30, 0, '2024-04-29', '2025-02-14', 'dsa');
 
 -- --------------------------------------------------------
 
@@ -60,16 +59,6 @@ CREATE TABLE `inscricao` (
   `descricao` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Extraindo dados da tabela `inscricao`
---
-
-INSERT INTO `inscricao` (`id_utilizador`, `id_curso`, `descricao`) VALUES
-(2, 1, 'ola tenho 88 anos'),
-(2, 2, 'olaaa'),
-(5, 1, 'saf'),
-(5, 2, 'dsa');
-
 -- --------------------------------------------------------
 
 --
@@ -80,6 +69,14 @@ CREATE TABLE `leciona` (
   `id_utilizador` int(40) NOT NULL,
   `id_curso` int(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `leciona`
+--
+
+INSERT INTO `leciona` (`id_utilizador`, `id_curso`) VALUES
+(3, 27),
+(9, 27);
 
 -- --------------------------------------------------------
 
@@ -109,7 +106,14 @@ INSERT INTO `utilizador` (`id_utilizador`, `nome`, `password`, `morada`, `email`
 (5, 'dsa', '5f039b4ef0058a1d652f13d612375a5b', 'sac', 'dsa@cfads.com', 2315, 1),
 (6, 'edbhasg', 'c4ca4238a0b923820dcc509a6f75849b', 'gasgsgg', 'yeet@gmail.com', 225151, 1),
 (7, 'feas', '01cfcd4f6b8770febfb40cb906715822', 'vycdavhjac', 'hvcda@hbea.com', 425164789, 0),
-(8, 'Guilherme', 'c00425797de3c98e7b32e814b54a6ec5', 'rua da praca', 'guilherme.roque@ipcbcampus.pt', 973023847, 3);
+(8, 'Guilherme', 'c00425797de3c98e7b32e814b54a6ec5', 'rua da praca', 'guilherme.roque@ipcbcampus.pt', 973023847, 3),
+(9, 'Profers', '202cb962ac59075b964b07152d234b70', 'sei la', 'teste@gmail.com', 243567888, 2),
+(10, 'Profers2', '202cb962ac59075b964b07152d234b70', 'rua da praca', '35221@gmail.com', 421, 2),
+(11, 'WILUSTGBC', '202cb962ac59075b964b07152d234b70', 'ola', '5221@gmail.com', 214452515, 2),
+(12, 'testestets', '202cb962ac59075b964b07152d234b70', 'das', 'fasfas@gmail.com', 2147483647, 0),
+(13, 'sei la', '202cb962ac59075b964b07152d234b70', 'noa sei', 'ola@yot.com', 1234124, 0),
+(14, 'jose', '202cb962ac59075b964b07152d234b70', 'JOSE', 'JOSE@gmail.com', 5346271, 1),
+(16, 'jose2', '202cb962ac59075b964b07152d234b70', 'JOSE', 'JOSE@gmail.com', 5346271, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -129,6 +133,12 @@ ALTER TABLE `inscricao`
   ADD KEY `FK_id_curso` (`id_curso`);
 
 --
+-- Índices para tabela `leciona`
+--
+ALTER TABLE `leciona`
+  ADD PRIMARY KEY (`id_utilizador`,`id_curso`);
+
+--
 -- Índices para tabela `utilizador`
 --
 ALTER TABLE `utilizador`
@@ -142,13 +152,13 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT de tabela `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_curso` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de tabela `utilizador`
 --
 ALTER TABLE `utilizador`
-  MODIFY `id_utilizador` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_utilizador` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restrições para despejos de tabelas
