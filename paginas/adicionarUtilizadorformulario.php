@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php include 'cabecalho.php'?>
+<?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3) : ?>  
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +9,7 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-    <?php include 'cabecalho.php'?>
+   
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 400px;">
             <div class="card-body">
@@ -75,3 +77,7 @@
 </form>
 </body>
 </html>
+<?php else: 
+    header("Location:Erro.php");
+?>
+<?php endif ?>

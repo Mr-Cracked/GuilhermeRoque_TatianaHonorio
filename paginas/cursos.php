@@ -43,14 +43,7 @@
                 <tbody>
                     <?php
                     if($_SESSION['tipo_utilizador'] == 3){
-                        $sql = "SELECT c.*
-                            FROM curso c
-                            WHERE NOT EXISTS (
-                                SELECT 1
-                                FROM inscricao i
-                                WHERE i.id_curso = c.id_curso
-                                AND i.id_utilizador = '{$_SESSION['id_utilizador']}'
-                            )";
+                        $sql = "SELECT * FROM curso";
                         $result = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_assoc($result)) {
                             ?>
