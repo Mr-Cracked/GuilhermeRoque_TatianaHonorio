@@ -30,6 +30,7 @@
                             ?>   
                             <th scope="col">Editar</th>
                             <th scope="col">Eliminar</th>
+                            <th scope="col">Inscrições</th>
                             <?php      
                         } else {
                             ?>
@@ -62,6 +63,7 @@
                                 <td><?php echo $row['data_fim']; ?></td>
                                 <td><a href="editarCursoformulario.php?id=<?php echo $row['id_curso']; ?>">Editar</a></td>
                                 <td><a href="eliminarCursoformulario.php?id=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
+                                <td><a href="eliminarCursoformulario.php?id=<?php echo $row['id_curso']; ?>">Inscrições</a></td>
                             </tr>
                             <?php
                         }

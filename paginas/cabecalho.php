@@ -45,9 +45,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil.php">Perfil</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="curso.php">Curso</a>
-                                </li>
                                   <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" 
                                     aria-haspopup="true" aria-expanded="false">Gerir</a>
