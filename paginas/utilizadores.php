@@ -9,10 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="bootstrap.css">
+    
+
 </head>
 <body>
-    
-            <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="margin-top: 20px;">
+            <div class="card-body">
             
                 <table class="table table-hover">
                     <thead>
@@ -51,8 +54,11 @@
                     </tbody>
                     
                 </table>
+            
+                <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarUtilizadorformulario.php">Adicionar</button></a> </div>
             </div>
-            <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarUtilizadorformulario.php">Adicionar</button></a> </div>
+        </div>
+    </div>
         </body>
 </html>
 <?php else: header("Location:Erro.php");?>
