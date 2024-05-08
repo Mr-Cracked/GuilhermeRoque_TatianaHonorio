@@ -3,9 +3,6 @@
     include 'cabecalho.php'; 
     include '../basedados/basedados.h';
 ?>
-
-<?php if (!empty($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] == 1 || $_SESSION['tipo_utilizador'] == 3)) : ?>  
-
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +10,8 @@
     <title>Perfil</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
+<?php if (!empty($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] == 1 || $_SESSION['tipo_utilizador'] == 3)) : ?>  
+
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="margin-top: 20px;">
@@ -99,8 +98,47 @@
         </div>
     </div>
 </body>
-</html>
-<?php else: 
-    header("Location:Erro.php");
-?>
+
+<?php else: ?>
+    <body>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="margin-top: 20px;">
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome do curso</th>
+                            <th scope="col">Vagas</th>
+                            <th scope="col">Vagas Preenchidas</th>
+                            <th scope="col">Data de Início</th>
+                            <th scope="col">Data de Conclusão</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <?php
+                            $sql = "SELECT *
+                                FROM curso ";
+                                
+                            $result = mysqli_query($conn, $sql);
+                            while ($row = mysqli_fetch_assoc($result)){
+                                ?>
+                                <tr class="table-active">
+                                    <th scope="row"><?php echo $row['id_curso']; ?></th>
+                                    <td><?php echo $row['nome']; ?></td>
+                                    <td><?php echo $row['vagas']; ?></td>
+                                    <td><?php echo $row['vagas_preenchidas']; ?></td>
+                                    <td><?php echo $row['data_inicio']; ?></td>
+                                    <td><?php echo $row['data_fim']; ?></td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
 <?php endif ?>
+</html>

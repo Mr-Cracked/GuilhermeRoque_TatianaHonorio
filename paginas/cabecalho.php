@@ -57,13 +57,17 @@
                                 break;
                         }
                     }
+                    else{
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cursos.php">Cursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="informacoes.php">Informações</a>
+                        </li>
+                        <?php 
+                    }
                     ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contato.php">Contato</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contato.php">Informações</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <?php 
