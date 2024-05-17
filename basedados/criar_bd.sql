@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Maio-2024 às 17:13
--- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Generation Time: May 18, 2024 at 12:38 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `gestaocursos`
+-- Database: `gestaocursos`
 --
 CREATE DATABASE IF NOT EXISTS `gestaocursos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `gestaocursos`;
@@ -26,7 +26,7 @@ USE `gestaocursos`;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `curso`
+-- Table structure for table `curso`
 --
 
 CREATE TABLE `curso` (
@@ -41,28 +41,36 @@ CREATE TABLE `curso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `curso`
+-- Dumping data for table `curso`
 --
 
 INSERT INTO `curso` (`id_curso`, `nome`, `descricao`, `vagas`, `vagas_preenchidas`, `data_inicio`, `data_fim`, `metodo_selecao`) VALUES
-(27, 'Engenharia Informática', 'Informática', 30, 0, '2024-04-29', '2025-02-14', 'dsa');
+(27, 'Engenharia Informática', 'Informática', 30, 1, '2024-04-29', '2025-02-14', 'dsa');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `inscricao`
+-- Table structure for table `inscricao`
 --
 
 CREATE TABLE `inscricao` (
   `id_utilizador` int(40) NOT NULL,
   `id_curso` int(40) NOT NULL,
-  `descricao` varchar(200) NOT NULL
+  `descricao` varchar(200) NOT NULL,
+  `estado` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inscricao`
+--
+
+INSERT INTO `inscricao` (`id_utilizador`, `id_curso`, `descricao`, `estado`) VALUES
+(2, 27, 'ftch', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `leciona`
+-- Table structure for table `leciona`
 --
 
 CREATE TABLE `leciona` (
@@ -71,7 +79,7 @@ CREATE TABLE `leciona` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `leciona`
+-- Dumping data for table `leciona`
 --
 
 INSERT INTO `leciona` (`id_utilizador`, `id_curso`) VALUES
@@ -81,7 +89,7 @@ INSERT INTO `leciona` (`id_utilizador`, `id_curso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `utilizador`
+-- Table structure for table `utilizador`
 --
 
 CREATE TABLE `utilizador` (
@@ -95,7 +103,7 @@ CREATE TABLE `utilizador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `utilizador`
+-- Dumping data for table `utilizador`
 --
 
 INSERT INTO `utilizador` (`id_utilizador`, `nome`, `password`, `morada`, `email`, `telemovel`, `tipo_utilizador`) VALUES
@@ -116,56 +124,56 @@ INSERT INTO `utilizador` (`id_utilizador`, `nome`, `password`, `morada`, `email`
 (16, 'jose2', '202cb962ac59075b964b07152d234b70', 'JOSE', 'JOSE@gmail.com', 5346271, 1);
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `curso`
+-- Indexes for table `curso`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`id_curso`);
 
 --
--- Índices para tabela `inscricao`
+-- Indexes for table `inscricao`
 --
 ALTER TABLE `inscricao`
   ADD PRIMARY KEY (`id_utilizador`,`id_curso`),
   ADD KEY `FK_id_curso` (`id_curso`);
 
 --
--- Índices para tabela `leciona`
+-- Indexes for table `leciona`
 --
 ALTER TABLE `leciona`
   ADD PRIMARY KEY (`id_utilizador`,`id_curso`);
 
 --
--- Índices para tabela `utilizador`
+-- Indexes for table `utilizador`
 --
 ALTER TABLE `utilizador`
   ADD PRIMARY KEY (`id_utilizador`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `curso`
+-- AUTO_INCREMENT for table `curso`
 --
 ALTER TABLE `curso`
   MODIFY `id_curso` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT de tabela `utilizador`
+-- AUTO_INCREMENT for table `utilizador`
 --
 ALTER TABLE `utilizador`
   MODIFY `id_utilizador` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `inscricao`
+-- Constraints for table `inscricao`
 --
 ALTER TABLE `inscricao`
   ADD CONSTRAINT `FK_id_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
