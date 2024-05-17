@@ -17,7 +17,7 @@
     $id_curso = $row['id_curso'];
     ?>
 
-    <div class="container d-flex justify-content-center align-items-center" style="height: 110vh;">
+    <div class="container d-flex justify-content-center align-items-center mt-5" style="height: 110vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded w-75 align-items-center ">
             <div class="card-body w-100">
                 <h4 class="card-title text-center">Editar Curso</h4>

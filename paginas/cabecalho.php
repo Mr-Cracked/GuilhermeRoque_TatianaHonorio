@@ -33,7 +33,7 @@
                             case '2':
                                 ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="cursoformulario.php">Curso</a>
+                                    <a class="nav-link" href="cursos.php">Curso</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil.php">Perfil</a>
