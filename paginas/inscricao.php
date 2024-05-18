@@ -2,6 +2,7 @@
 include '../basedados/basedados.h';
 // Obter os dados do formulário
 session_start();
+php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1){
 $id_curso = $_POST['id_curso'];
 $id_utilizador = $_SESSION['id_utilizador'];
 $descricao = $_POST['descricao'];
@@ -22,4 +23,7 @@ $descricao = $_POST['descricao'];
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong></strong> <a href="inscricaoformulario.php" class="alert-link">Erro ao editar!!!</div>';
         }
+    }else{
+        header("Erro.jsp");
+    }
 ?>

@@ -28,6 +28,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="inscricoes.php">Inscrições</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="informacoes.php">Informações</a>
+                                </li>
                                 <?php
                                 break;
                             case '2':
@@ -37,6 +40,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil.php">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="informacoes.php">Informações</a>
                                 </li>
                                 <?php
                                 break;
@@ -53,7 +59,10 @@
                                           <a class="dropdown-item" href="utilizadores.php">Utilizadores</a>
                                           <a class="dropdown-item" href="geririnscricoes.php">inscricoes</a>
                                       </div>
-                                  </li>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="informacoes.php">Informações</a>
+                                </li>
                                 <?php
                                 break;
                         }

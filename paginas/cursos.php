@@ -67,7 +67,7 @@
                                     <td><?php echo $row['data_inicio']; ?></td>
                                     <td><?php echo $row['data_fim']; ?></td>
                                     <td><a href="editarCursoformulario.php?id=<?php echo $row['id_curso']; ?>">Editar</a></td>
-                                    <td><a href="eliminarCursoformulario.php?id=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
+                                    <td><a href="eliminarCurso.php?id=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
                                     <td><a href="gerirInscricoes.php?id=<?php echo $row['id_curso']; ?>">Inscrições</a></td>
                                 </tr>
                                 <?php

@@ -3,6 +3,7 @@
     include 'cabecalho.php'; 
     include '../basedados/basedados.h';
 ?>
+<?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] >= 2) : ?>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +23,7 @@
                         </div>
                     </div>
                 </form>
-                <?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] >= 2) : ?>  
+                  
                     
                     <table class="table table-hover">
                         <thead>

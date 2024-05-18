@@ -40,6 +40,8 @@ include '../basedados/basedados.h'
             <p>600€</p>
             <h3>Ramo de Saúde</h3>
             <p>1200€</p>
+            <h3>Outros Ramos</h3>
+            <p>700€</p>
         </div>
     </div>
 </body>

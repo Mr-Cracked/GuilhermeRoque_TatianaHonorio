@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
+<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?> 
 <?php  $sql = "SELECT c.nome, i.descricao, i.estado,i.id_curso, i.id_utilizador
                 FROM inscricao i INNER JOIN curso c
                 ON i.id_curso = c.id_curso
                 WHERE i.id_utilizador = '{$_SESSION['id_utilizador']}'";
         $result = mysqli_query($conn, $sql);?>
-<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
+          
 <html lang="pt">
 <head>
     <meta charset="UTF-8">

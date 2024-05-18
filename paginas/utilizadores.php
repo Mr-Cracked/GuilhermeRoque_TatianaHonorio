@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <?php 
 include 'cabecalho.php'; 
-include '../basedados/basedados.h';
+include '../basedados/basedados.h';?>
+<?php if (isset($_SESSION['tipo_utilizador']) &&  $_SESSION['tipo_utilizador'] == 3) : ?> 
+<?php 
 
 $search_name = isset($_POST['search_name']) ? $_POST['search_name'] : '';
 
@@ -13,7 +15,7 @@ if (!empty($search_name)) {
 $result = mysqli_query($conn, $sql);
 ?>
 
-<?php if (isset($_SESSION['tipo_utilizador']) &&  $_SESSION['tipo_utilizador'] == 3) : ?>           
+          
 <html lang="pt">
 <head>
     <meta charset="UTF-8">

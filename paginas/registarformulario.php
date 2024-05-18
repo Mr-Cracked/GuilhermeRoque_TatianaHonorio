@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php if (empty($_SESSION['tipo_utilizador'])) : ?>  
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -52,3 +53,7 @@
 </form>
 </body>
 </html>
+<?php else: 
+    header("Location:Erro.php");
+?>
+<?php endif ?>
