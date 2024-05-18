@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php include 'cabecalho.php'; ?>
-<?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3) : ?>
+<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3) : ?>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 <body>
     <?php
     include '../basedados/basedados.h';
-    $sql = "SELECT * FROM utilizador WHERE nome=\"$_GET[nome]\"";
+    $sql = "SELECT * FROM utilizador WHERE id_utilizador=\"$_GET[id]\"";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
     ?>
@@ -20,7 +20,7 @@
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded w-75">
             <div class="card-body">
-                <h4 class="card-title text-center">Curso</h4>
+                <h4 class="card-title text-center">Utilizador</h4>
                 <br>
                 <form id="form1" name="form1" method="post" action="editarUtilizador.php">
                     <div class="form-group">
@@ -91,6 +91,6 @@
     </div>
 </body>
 </html>
-<?php else: header("Location:Erro.php");?>
-
+<?php else: 
+    header("Location:Erro.php");?>
 <?php endif ?>

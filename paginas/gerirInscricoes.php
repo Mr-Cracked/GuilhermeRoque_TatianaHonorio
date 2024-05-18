@@ -14,7 +14,7 @@
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 20px;">
             <div class="card-body">
-                <?php if (!empty($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] == 1 || $_SESSION['tipo_utilizador'] == 3)) : ?>  
+                <?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] >= 2) : ?>  
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -22,22 +22,27 @@
                                 <th scope="col">Nome do Aluno</th>
                                 <th scope="col">ID Curso</th>
                                 <th scope="col">Nome do Curso</th>
-                                <th scope="col">Descrição</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col"></th>
-                                <?php if ($_SESSION['tipo_utilizador'] == 3) : ?>   
-                                    <th scope="col">Aceitar</th>
-                                    <th scope="col">Eliminar</th>
-                                    <th scope="col">Visualizar</th>
-                                <?php endif; ?>
+                                <th scope="col">Aceitar</th>
+                                <th scope="col">Eliminar</th>
+                                <th scope="col">Visualizar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, c.descricao, i.estado 
+                            if(isset($_GET["id"])){
+                                $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, i.estado 
+                                    FROM inscricao i
+                                    INNER JOIN utilizador u ON i.id_utilizador = u.id_utilizador
+                                    INNER JOIN curso c ON i.id_curso = c.id_curso
+                                    WHERE i.id_curso = '{$_GET['id']}'";
+                            }else{
+                                $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, i.estado 
                                     FROM inscricao i
                                     INNER JOIN utilizador u ON i.id_utilizador = u.id_utilizador
                                     INNER JOIN curso c ON i.id_curso = c.id_curso";
+                            }
+                            
 
                             $result = mysqli_query($conn, $sql);
                             if (!$result) {
@@ -50,14 +55,10 @@
                                     <td><?php echo $row['nome_aluno']; ?></td>
                                     <td><?php echo $row['id_curso']; ?></td>
                                     <td><?php echo $row['nome_curso']; ?></td>
-                                    <td><?php echo $row['descricao']; ?></td>
                                     <td><?php echo $row['estado']; ?></td>
-                                    
-                                    <?php if ($_SESSION['tipo_utilizador'] == 3) : ?>
-                                        <td><a href="aceitarInscricao.php?id=<?php echo $row['id_utilizador']; ?>">Aceitar</a></td>
-                                        <td><a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador']; ?>">Eliminar</a></td>
-                                        <td><a href="visualizarInscricao.php?id=<?php echo $row['id_utilizador']; ?>">Visualizar</a></td>
-                                    <?php endif; ?>
+                                    <td><a href="aceitarInscricao.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Aceitar</a></td>
+                                    <td><a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
+                                    <td><a href="visualizarInscricao.php?id_utilizador=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Visualizar</a></td>
                                 </tr>
                                 <?php
                                 }
@@ -65,11 +66,8 @@
                             ?>
                         </tbody>
                     </table>
-                    <?php if ($_SESSION['tipo_utilizador'] == 3) : ?>        
-                        <a type="button" class="btn btn-primary" href="adicionarCursoformulario.php">Adicionar</a>
-                    <?php endif; ?>
-                <?php else : ?>
-                    <p>Acesso negado. Por favor, faça login para ver esta página.</p>
+                <?php else : 
+                    header("Erro.php");?>
                 <?php endif; ?>
             </div>
         </div>

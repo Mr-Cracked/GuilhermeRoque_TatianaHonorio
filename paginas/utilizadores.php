@@ -2,7 +2,7 @@
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
 <?php  $sql = "SELECT * FROM utilizador";
         $result = mysqli_query($conn, $sql);?>
-<?php if (!empty($_SESSION['tipo_utilizador']) &&  $_SESSION['tipo_utilizador'] == 3) : ?>           
+<?php if (isset($_SESSION['tipo_utilizador']) &&  $_SESSION['tipo_utilizador'] == 3) : ?>           
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -43,8 +43,8 @@
                                 <td><?php echo $row['email']; ?></td>
                                 <td><?php echo $row['telemovel']; ?></td>
                                 <?php
-                                echo "<td><a href=\"editarUtilizadorformulario.php?nome=". $row['nome']."\">Editar</a></td>";
-                                echo "<td><a href=\"eliminarUtilizadorformulario.php?nome=". $row['nome']."\">Eliminar</a></td> ";
+                                echo "<td><a href=\"editarUtilizadorformulario.php?id=". $row['id_utilizador']."\">Editar</a></td>";
+                                echo "<td><a href=\"eliminarUtilizador.php?id=". $row['id_utilizador']."\">Eliminar</a></td> ";
                                 ?>
                                 
                             </tr>

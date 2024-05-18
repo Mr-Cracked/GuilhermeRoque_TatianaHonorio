@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php include 'cabecalho.php'; ?>
-<?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
+<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
 <html lang="pt">
 <head>
     <meta charset="UTF-8">

@@ -33,7 +33,7 @@
                             case '2':
                                 ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="cursos.php">Curso</a>
+                                    <a class="nav-link" href="cursos.php">Cursos</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="perfil.php">Perfil</a>
@@ -51,6 +51,7 @@
                                       <div class="dropdown-menu">
                                           <a class="dropdown-item" href="cursos.php">Cursos</a>
                                           <a class="dropdown-item" href="utilizadores.php">Utilizadores</a>
+                                          <a class="dropdown-item" href="geririnscricoes.php">inscricoes</a>
                                       </div>
                                   </li>
                                 <?php

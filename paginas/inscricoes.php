@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
-<?php  $sql = "SELECT c.nome, i.descricao, i.id_curso
+<?php  $sql = "SELECT c.nome, i.descricao, i.id_curso, i.id_utilizador
                 FROM inscricao i INNER JOIN curso c
                 ON i.id_curso = c.id_curso
                 WHERE i.id_utilizador = '{$_SESSION['id_utilizador']}'";
         $result = mysqli_query($conn, $sql);?>
-<?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
+<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 1) : ?>           
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -32,8 +32,8 @@
                             <tr class="table-active">
                                 <th scope="row"><?php echo $row['nome']; ?></th>
                                 <td><?php echo $row['descricao']; ?></td>
-                                <td> <a href="editarInscricaoformulario.php?id=<?php echo $row['id_curso']; ?>">Editar</a></td>
-                                <td> <a href="eliminarInscricaoformulario.php?id=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
+                                <td> <a href="editarInscricaoformulario.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Editar</a></td>
+                                <td> <a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
 
                             </tr>
                             <?php

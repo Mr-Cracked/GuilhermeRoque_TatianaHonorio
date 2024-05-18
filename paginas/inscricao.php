@@ -9,8 +9,6 @@ $descricao = $_POST['descricao'];
         //Inserir inscrição
         $sql = "INSERT INTO inscricao (id_curso, id_utilizador, descricao) VALUES ('$id_curso', '$id_utilizador', '$descricao')";
         $result = mysqli_query($conn, $sql);
-        $sql = "UPDATE curso SET vagas_preenchidas= vagas_preenchidas + 1 WHERE id_curso = '$id_curso'";
-        mysqli_query($conn, $sql);
 
         // Verificar se a Inserção foi bem-sucedida
         if ($result) {

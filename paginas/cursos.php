@@ -10,7 +10,7 @@
     <title>Perfil</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
-<?php if (!empty($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] == 1 || $_SESSION['tipo_utilizador'] == 3)) : ?>  
+<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] >= 1) : ?>  
 
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
@@ -32,9 +32,13 @@
                                 <th scope="col">Eliminar</th>
                                 <th scope="col">Inscrições</th>
                                 <?php      
-                            } else {
+                            } else if($_SESSION['tipo_utilizador'] == 2){
                                 ?>
-                                <th scope="col">Inscrição</th>
+                                <th scope="col">Inscrições</th>
+                                <?php
+                            }else{
+                                ?>
+                                <th scope="col">Inscriver-se</th>
                                 <?php
                             }
                             ?>
@@ -80,6 +84,22 @@
                                     <td><?php echo $row['data_inicio']; ?></td>
                                     <td><?php echo $row['data_fim']; ?></td>
                                     <td><a href="inscricaoformulario.php?id=<?php echo $row['id_curso']; ?>">Inscrever-se</a></td>
+                                </tr>
+                                <?php
+                            }
+                        }else if($_SESSION['tipo_utilizador'] == 2){
+                            $sql = "SELECT * FROM curso c INNER JOIN leciona l ON l.id_curso=c.id_curso WHERE l.id_utilizador = '{$_SESSION['id_utilizador']}'";
+                            $result = mysqli_query($conn, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                <tr class="table-active">
+                                    <th scope="row"><?php echo $row['id_curso']; ?></th>
+                                    <td><?php echo $row['nome']; ?></td>
+                                    <td><?php echo $row['vagas']; ?></td>
+                                    <td><?php echo $row['vagas_preenchidas']; ?></td>
+                                    <td><?php echo $row['data_inicio']; ?></td>
+                                    <td><?php echo $row['data_fim']; ?></td>
+                                    <td><a href="gerirInscricoes.php?id=<?php echo $row['id_curso']; ?>">Inscrições</a></td>
                                 </tr>
                                 <?php
                             }

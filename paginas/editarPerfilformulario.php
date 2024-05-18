@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; ?>
-<?php if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0) : ?>           
+<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0) : ?>           
 <html lang="pt">
 <head>
     <meta charset="UTF-8">

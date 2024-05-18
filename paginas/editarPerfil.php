@@ -1,11 +1,11 @@
 <?php
 include '../basedados/basedados.h';
 session_start();
-if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0){ 
+if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0){ 
 // Obter os dados do formulário
 
 $existepass = false;
-if (!empty($_POST['password'])){
+if (isset($_POST['password'])){
     $existepass = true;
     $senha_encriptada = md5($password = $_POST['password']);
 }

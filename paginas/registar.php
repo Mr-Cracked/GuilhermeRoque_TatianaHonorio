@@ -1,7 +1,6 @@
 <?php
 include '../basedados/basedados.h';
 session_start();
-if (!empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
     // Obter os dados do formulário
     if (empty($_POST['nivelacesso'])) {
         $nivel = null;
@@ -71,7 +70,4 @@ if (!empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
             }
         }
     }
-}else{
-    header("Location: Erro.php");
-}
 ?>

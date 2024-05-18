@@ -1,7 +1,7 @@
 <?php
 include '../basedados/basedados.h';
 session_start();
-if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
+if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     
     //feito para saber quantos docentes foram inseridos ao todo
     $docentes = $_POST['docentes'];

@@ -3,9 +3,9 @@ include '../basedados/basedados.h';
 
 // Obter os dados do formulário
 session_start();
-if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
+if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     $existepass = false;
-    if (!empty($_POST['password'])){
+    if (isset($_POST['password'])){
         $existepass = true;
         $senha_encriptada = md5($password = $_POST['password']);
     }

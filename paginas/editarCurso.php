@@ -2,7 +2,7 @@
 include '../basedados/basedados.h';
 // Obter os dados do formulário
 session_start();
-if (!empty($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
+if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     $id = $_POST['id_curso'];
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
