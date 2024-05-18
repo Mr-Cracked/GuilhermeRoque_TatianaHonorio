@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
-<?php  $sql = "SELECT c.nome, i.descricao, i.id_curso, i.id_utilizador
+<?php  $sql = "SELECT c.nome, i.descricao, i.estado,i.id_curso, i.id_utilizador
                 FROM inscricao i INNER JOIN curso c
                 ON i.id_curso = c.id_curso
                 WHERE i.id_utilizador = '{$_SESSION['id_utilizador']}'";
@@ -20,6 +20,7 @@
                         <tr>
                             <th scope="col">Nome do curso</th>
                             <th scope="col">Descrição</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Editar</th>
                             <th scope="col">Eliminar</th>
                         </tr>
@@ -32,6 +33,7 @@
                             <tr class="table-active">
                                 <th scope="row"><?php echo $row['nome']; ?></th>
                                 <td><?php echo $row['descricao']; ?></td>
+                                <td><?php echo $row['estado']; ?></td>
                                 <td> <a href="editarInscricaoformulario.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Editar</a></td>
                                 <td> <a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
 

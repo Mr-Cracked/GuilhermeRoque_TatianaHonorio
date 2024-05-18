@@ -43,7 +43,7 @@
 
                     <div class="form-group">
                         <label for="descricao">Descrição:</label>
-                        <textarea type="text" class="form-control" name="descricao" value="" required></textarea>
+                        <textarea type="text" class="form-control" name="descricao" required></textarea>
                     </div>
                     <br>
                     <input type="submit" name="Submit" value="Guardar" class="btn btn-primary"/>

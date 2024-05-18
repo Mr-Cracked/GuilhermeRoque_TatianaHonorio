@@ -46,7 +46,7 @@
             
                     <input type="submit" name="Submit" value="Aceitar" class="btn btn-primary"/>
                     <a type="button" class="btn btn-danger" href="eliminarInscricao.php">Eliminar</button></a>
-                    <a type="button" class="btn btn-secondary" href="gerirInscricoes.php">Voltar</button></a>
+                    <a type="button" class="btn btn-secondary" href="gerirInscricoes.php?id=<?php echo $row['id_curso'] ?>">Voltar</button></a>
                 </form>
             </div>
         </div>

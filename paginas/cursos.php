@@ -10,12 +10,20 @@
     <title>Perfil</title>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
-<?php if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] >= 1) : ?>  
+<?php if (isset($_SESSION['tipo_utilizador']) && ($_SESSION['tipo_utilizador'] >= 1)) : ?>  
 
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="margin-top: 20px;">
             <div class="card-body">
+            <form method="GET" action="">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="Pesquisar Cursos" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+                        </div>
+                    </div>
+                </form>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -32,13 +40,9 @@
                                 <th scope="col">Eliminar</th>
                                 <th scope="col">Inscrições</th>
                                 <?php      
-                            } else if($_SESSION['tipo_utilizador'] == 2){
+                            } else {
                                 ?>
-                                <th scope="col">Inscrições</th>
-                                <?php
-                            }else{
-                                ?>
-                                <th scope="col">Inscriver-se</th>
+                                <th scope="col">Inscrição</th>
                                 <?php
                             }
                             ?>
@@ -47,7 +51,11 @@
                     <tbody>
                         <?php
                         if($_SESSION['tipo_utilizador'] == 3){
-                            $sql = "SELECT * FROM curso";
+
+                            $search = isset($_GET['search']) ? $_GET['search'] : '';
+                            $searchQuery = $search ? "WHERE nome LIKE '%$search%'" : '';
+
+                            $sql = "SELECT * FROM curso $searchQuery";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
@@ -65,14 +73,20 @@
                                 <?php
                             }
                         } else if($_SESSION['tipo_utilizador'] == 1){
+
+                            $search = isset($_GET['search']) ? $_GET['search'] : '';
+                            $searchQuery = $search ? "AND nome LIKE '%$search%'" : '';
+                            
                             $sql = "SELECT c.*
-                                FROM curso c
-                                WHERE NOT EXISTS (
-                                    SELECT 1
-                                    FROM inscricao i
-                                    WHERE i.id_curso = c.id_curso
-                                    AND i.id_utilizador = '{$_SESSION['id_utilizador']}') 
-                                    AND c.vagas_preenchidas < c.vagas";
+                            FROM curso c
+                            WHERE NOT EXISTS (
+                                SELECT 1
+                                FROM inscricao i
+                                WHERE i.id_curso = c.id_curso
+                                AND i.id_utilizador = '{$_SESSION['id_utilizador']}') 
+                                AND c.vagas_preenchidas < c.vagas
+                                $searchQuery";
+
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)){
                                 ?>
@@ -88,9 +102,18 @@
                                 <?php
                             }
                         }else if($_SESSION['tipo_utilizador'] == 2){
-                            $sql = "SELECT * FROM curso c INNER JOIN leciona l ON l.id_curso=c.id_curso WHERE l.id_utilizador = '{$_SESSION['id_utilizador']}'";
+
+                            $search = isset($_GET['search']) ? $_GET['search'] : '';
+                            $searchQuery = $search ? "AND nome LIKE '%$search%'" : '';
+                            
+                            $sql = "SELECT c.*
+                            FROM curso c
+                            INNER JOIN leciona l ON c.id_curso = l.id_curso
+                            WHERE l.id_utilizador = '{$_SESSION['id_utilizador']}'
+                                $searchQuery";
+
                             $result = mysqli_query($conn, $sql);
-                            while ($row = mysqli_fetch_assoc($result)) {
+                            while ($row = mysqli_fetch_assoc($result)){
                                 ?>
                                 <tr class="table-active">
                                     <th scope="row"><?php echo $row['id_curso']; ?></th>

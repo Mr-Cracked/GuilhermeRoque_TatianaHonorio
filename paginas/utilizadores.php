@@ -1,7 +1,18 @@
 <!DOCTYPE html>
-<?php include 'cabecalho.php'; include '../basedados/basedados.h';?>
-<?php  $sql = "SELECT * FROM utilizador";
-        $result = mysqli_query($conn, $sql);?>
+<?php 
+include 'cabecalho.php'; 
+include '../basedados/basedados.h';
+
+$search_name = isset($_POST['search_name']) ? $_POST['search_name'] : '';
+
+$sql = "SELECT * FROM utilizador";
+if (!empty($search_name)) {
+    $search_name = mysqli_real_escape_string($conn, $search_name);
+    $sql .= " WHERE nome LIKE '%$search_name%'";
+}
+$result = mysqli_query($conn, $sql);
+?>
+
 <?php if (isset($_SESSION['tipo_utilizador']) &&  $_SESSION['tipo_utilizador'] == 3) : ?>           
 <html lang="pt">
 <head>
@@ -9,14 +20,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="bootstrap.css">
-    
-
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card shadow-lg p-3 mb-5 bg-white rounded " style="margin-top: 20px;">
             <div class="card-body">
-            
+
+                <form method="POST" action="" class="mb-4">
+                    <div class="input-group">
+                        <input type="text" name="search_name" class="form-control" placeholder="Pesquisar Utilizador" value="<?php echo htmlspecialchars($search_name); ?>">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -46,21 +64,19 @@
                                 echo "<td><a href=\"editarUtilizadorformulario.php?id=". $row['id_utilizador']."\">Editar</a></td>";
                                 echo "<td><a href=\"eliminarUtilizador.php?id=". $row['id_utilizador']."\">Eliminar</a></td> ";
                                 ?>
-                                
                             </tr>
                             <?php
                         }
                         ?>
                     </tbody>
-                    
                 </table>
             
-                <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarUtilizadorformulario.php">Adicionar</button></a> </div>
+                <div style="display: flex; justify-content: center;"><a type="button" class="btn btn-primary" href="adicionarUtilizadorformulario.php">Adicionar</a> </div>
             </div>
         </div>
     </div>
-        </body>
+</body>
 </html>
-<?php else: header("Location:Erro.php");?>
+<?php else: header("Location:Erro.php"); ?>
     
 <?php endif ?>
