@@ -2,7 +2,7 @@
 include '../basedados/basedados.h';
 session_start();
 
-if(empty($_SESSION['tipo_utilizador'])){
+if(empty($_SESSION['tipo_utilizador'] || $_SESSION['tipo_utilizador'] == 3)){
     
 
     if (empty($_POST['nivelacesso'])) {
