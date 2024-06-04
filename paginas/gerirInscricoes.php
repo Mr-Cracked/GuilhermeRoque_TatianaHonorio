@@ -34,7 +34,7 @@
                                 <th scope="col">Nome do Curso</th>
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Aceitar</th>
+                                <th scope="col">Ação</th>
                                 <th scope="col">Eliminar</th>
                                 <th scope="col">Visualizar</th>
                             </tr>
@@ -73,7 +73,13 @@
                                     <td><?php echo $row['nome_curso']; ?></td>
                                     <td><?php echo $row['descricao']; ?></td>
                                     <td><?php echo $row['estado']; ?></td>
+                                    <?php if($row['estado'] == 0 ){ ?>
                                     <td><a href="aceitarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Aceitar</a></td>
+                                    <?php 
+                                    }else{
+                                        ?>
+                                        <td><a href="RevocarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Revocar</a></td>
+                                        <?php } ?>
                                     <td><a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Eliminar</a></td>
                                     <td><a href="visualizarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Visualizar</a></td>
                                 </tr>
@@ -82,11 +88,14 @@
                             }
                             ?>
                         </tbody>
+                        
                     </table>
                 <?php else : header("Erro.php");?>
                     
                 <?php endif; ?>
+                <a type="button" class="btn btn-primary" href="AdicionarInscricaoFormulario.php">Adicionar</button></a>
             </div>
+            
         </div>
     </div>
 </body>

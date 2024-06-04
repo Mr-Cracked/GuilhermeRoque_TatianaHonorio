@@ -4,27 +4,30 @@ session_start();
 if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0){ 
 // Obter os dados do formulário
 
-$existepass = false;
-if (isset($_POST['password'])){
+
+if (!empty($_POST['pass'])){
     $existepass = true;
-    $senha_encriptada = md5($password = $_POST['password']);
+    $senha_encriptada = md5($pass = $_POST['pass']);
+}else{
+    $existepass = false;
 }
+$nome = $_POST['username'];
 $email = $_POST['email'];
 $telemovel = $_POST['telemovel'];
 $morada = $_POST['morada'];
-$nome = $_POST['morada'];
 
     if($existepass){
         // Atualizar utilizador 
-        $sql = "UPDATE utilizador SET nome='$nome',password='$senha_encriptada', email='$email', telemovel='$telemovel', morada='$morada' WHERE id_utilizador='$_SESSION[id_utilizador]'";
+        $sql = "UPDATE utilizador SET nome='$nome',pass='$senha_encriptada', email='$email', telemovel='$telemovel', morada='$morada' WHERE id_utilizador='$_SESSION[id_utilizador]'";
         $result = mysqli_query($conn, $sql);
 
         // Verificar se a atualização foi bem-sucedida
         if ($result) {
+            $_SESSION['nome']= $nome;
             $_SESSION['email']= $email;
             $_SESSION['telemovel']= $telemovel;
             $_SESSION['morada']= $morada;
-            $_SESSION['password']= $senha_encriptada;
+            $_SESSION['pass']= $senha_encriptada;
             echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-success">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -42,6 +45,7 @@ $nome = $_POST['morada'];
 
         // Verificar se a atualização foi bem-sucedida
         if ($result) {
+            $_SESSION['nome']= $nome;
             $_SESSION['email']= $email;
             $_SESSION['telemovel']= $telemovel;
             $_SESSION['morada']= $morada;

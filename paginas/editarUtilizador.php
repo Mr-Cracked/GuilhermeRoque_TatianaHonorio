@@ -4,10 +4,12 @@ include '../basedados/basedados.h';
 // Obter os dados do formulário
 session_start();
 if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
-    $existepass = false;
-    if (isset($_POST['password'])){
+    
+    if (!empty($_POST['pass'])){
         $existepass = true;
-        $senha_encriptada = md5($password = $_POST['password']);
+        $senha_encriptada = md5($pass = $_POST['pass']);
+    }else{
+        $existepass = false;
     }
     $nivel = $_POST['nivelacesso'];
     $email = $_POST['email'];
@@ -16,7 +18,7 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     $nome = $_POST['nome'];
     $id_utilizador = $_POST['id_utilizador'];
 
-    $sql = "SELECT * FROM utilizador WHERE nome = '$nome'";
+    $sql = "SELECT * FROM utilizador WHERE id_utilizador = '$id_utilizador'";
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_affected_rows($conn) > 1){
@@ -27,7 +29,7 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     }else{
         if($existepass){
             // Atualizar utilizador 
-            $sql = "UPDATE utilizador SET nome='$nome', password='$senha_encriptada', email='$email', telemovel='$telemovel', morada='$morada', tipo_utilizador='$nivel' WHERE id_utilizador='$id_utilizador'";
+            $sql = "UPDATE utilizador SET nome='$nome', pass='$senha_encriptada', email='$email', telemovel='$telemovel', morada='$morada', tipo_utilizador='$nivel' WHERE id_utilizador='$id_utilizador'";
             $result = mysqli_query($conn, $sql);
 
             // Verificar se a atualização foi bem-sucedida

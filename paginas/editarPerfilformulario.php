@@ -19,7 +19,7 @@
                 <form id="form1" name="form1" method="post" action="editarPerfil.php">
                     <div class="form-group">
                         <label for="username">ID de Utilizador:</label>
-                        <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['id_utilizador']; ?>" readonly disabled>
+                        <input type="text" class="form-control" name="id_utilizador" value="<?php echo $_SESSION['id_utilizador']; ?>" readonly disabled>
                     </div>
                     <br>
                     <div class="form-group">
@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="text" class="form-control" name="password" value="">
+                        <input type="text" class="form-control" name="pass" value="">
                     </div>
                     <br>
 

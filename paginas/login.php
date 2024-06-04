@@ -5,13 +5,13 @@ if(empty($_SESSION['tipo_utilizador'])){
 
     // Obter os dados do formulário
     $nome = $_POST['username'];
-    $password = $_POST['password']; // A senha ainda não está encriptada
+    $pass = $_POST['pass']; // A senha ainda não está encriptada
 
     // Encriptar a senha
-    $senha_encriptada = md5($password);
+    $senha_encriptada = md5($pass);
 
     // Consultar se o utilizador existe
-    $sql = "SELECT * FROM utilizador WHERE nome=\"$nome\" AND password=\"$senha_encriptada\"";
+    $sql = "SELECT * FROM utilizador WHERE nome='$nome' AND pass='$senha_encriptada'";
     $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
 
@@ -29,7 +29,7 @@ if(empty($_SESSION['tipo_utilizador'])){
             $_SESSION['email']= $row['email'];
             $_SESSION['telemovel']= $row['telemovel'];
             $_SESSION['morada']= $row['morada'];
-            $_SESSION['password']= $row['password'];
+            $_SESSION['pass']= $row['pass'];
             header("Location: perfil.php");
             exit();
         } elseif ($row['tipo_utilizador'] <= 0) {

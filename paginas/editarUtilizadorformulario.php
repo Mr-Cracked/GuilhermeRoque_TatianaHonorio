@@ -12,7 +12,7 @@
 <body>
     <?php
     include '../basedados/basedados.h';
-    $sql = "SELECT * FROM utilizador WHERE id_utilizador=\"$_GET[id]\"";
+    $sql = "SELECT * FROM utilizador WHERE id_utilizador='$_GET[id]'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
     ?>
@@ -61,7 +61,7 @@
 
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="text" class="form-control" name="password" value="">
+                        <input type="text" class="form-control" name="pass" value="">
                     </div>
                     <br>
 

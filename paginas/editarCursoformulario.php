@@ -11,7 +11,7 @@
 <body>
     <?php
     include '../basedados/basedados.h';
-    $sql = "SELECT * FROM curso WHERE id_curso=\"$_GET[id]\"";
+    $sql = "SELECT * FROM curso WHERE id_curso='$_GET[id]'";
     $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
     $id_curso = $row['id_curso'];

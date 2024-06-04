@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $sql);
                         <tr>
                             <th scope="col">Nível de Acesso</th> 
                             <th scope="col">Nome</th>
-                            <th scope="col">Password</th>
+                            <th scope="col">pass</th>
                             <th scope="col">Morada</th>
                             <th scope="col">Email</th>
                             <th scope="col">Telemóvel</th> 
@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $sql);
                             <tr class="table-active">
                                 <th scope="row"><?php echo $row['tipo_utilizador']; ?></th>
                                 <td><?php echo $row['nome']; ?></td>
-                                <td><?php echo $row['password']; ?></td>
+                                <td><?php echo $row['pass']; ?></td>
                                 <td><?php echo $row['morada']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
                                 <td><?php echo $row['telemovel']; ?></td>

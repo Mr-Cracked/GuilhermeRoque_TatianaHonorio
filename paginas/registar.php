@@ -18,13 +18,13 @@ if(empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
                 echo '<strong>Erro!</strong> <a href="index.php" class="alert-link">Não há dados suficientes</a></div>';
     }else{
         $nome = $_POST['username'];
-        $password = $_POST['password']; // A senha ainda não está encriptada
+        $pass = $_POST['pass']; // A senha ainda não está encriptada
         $email = $_POST['email'];
         $telemovel = $_POST['telemovel'];
         $morada = $_POST['morada'];
 
         // Encriptar a senha
-        $senha_encriptada = md5($password);
+        $senha_encriptada = md5($pass);
 
         
         $sql = "SELECT * FROM utilizador WHERE nome='$nome'";
@@ -46,7 +46,7 @@ if(empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
         } else {
             if (empty($nivel)) {
                 
-                $sql = "INSERT INTO utilizador (nome, password, email, telemovel, morada) VALUES ('$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
+                $sql = "INSERT INTO utilizador (nome, pass, email, telemovel, morada) VALUES ('$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
                 $result = mysqli_query($conn, $sql);
 
                 
@@ -63,7 +63,7 @@ if(empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
                 }
             } else {
                 
-                $sql = "INSERT INTO utilizador (tipo_utilizador,nome, password, email, telemovel, morada) VALUES ('$nivel','$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
+                $sql = "INSERT INTO utilizador (tipo_utilizador,nome, pass, email, telemovel, morada) VALUES ('$nivel','$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
                 $result = mysqli_query($conn, $sql);
 
                 
