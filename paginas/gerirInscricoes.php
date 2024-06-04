@@ -45,14 +45,14 @@
                             $search = isset($_GET['search']) ? $_GET['search'] : '';
                             $searchQuery = $search ? "WHERE c.nome LIKE '%$search%'" : '';
                             if(isset($_GET['id'])){
-                                $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, c.descricao, i.estado 
+                                $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, i.descricao, i.estado 
                                     FROM inscricao i
                                     INNER JOIN utilizador u ON i.id_utilizador = u.id_utilizador
                                     INNER JOIN curso c ON i.id_curso = c.id_curso
                                     WHERE i.id_curso = '{$_GET['id']}'
                                     $searchQuery";
                             }else{
-                                $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, c.descricao, i.estado 
+                                $sql = "SELECT i.id_utilizador, u.nome AS nome_aluno, c.id_curso, c.nome AS nome_curso, i.descricao, i.estado 
                                     FROM inscricao i
                                     INNER JOIN utilizador u ON i.id_utilizador = u.id_utilizador
                                     INNER JOIN curso c ON i.id_curso = c.id_curso

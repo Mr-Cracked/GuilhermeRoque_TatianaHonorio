@@ -11,10 +11,11 @@
 </head>
 <body>
     <?php
-        $sql = "SELECT c.nome AS nomeUti, u.nome AS nomeCurso, u.id_utilizador, c.id_curso, i.descricao AS descricao, i.estado 
+        $sql = "SELECT u.nome AS nomeUti, c.nome AS nomeCurso, u.id_utilizador, c.id_curso, i.descricao AS descricao, i.estado 
         FROM inscricao i 
         INNER JOIN utilizador u ON u.id_utilizador=i.id_utilizador 
-        INNER JOIN curso c ON c.id_curso = i.id_curso";
+        INNER JOIN curso c ON c.id_curso = i.id_curso
+        WHERE i.id_curso = '{$_GET['id_curso']}' AND i.id_utilizador = '{$_GET['id']}'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
     ?>
