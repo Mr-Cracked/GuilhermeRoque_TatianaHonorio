@@ -4,10 +4,10 @@ session_start();
 if(empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
     
 
-    if (empty($_SESSION['tipo_utilizador'])) {
+    if (empty($_POST['nivelacesso'])) {
         $nivel = null;
     } else {
-        $nivel = $_SESSION['tipo_utilizador'];
+        $nivel = $_POST['nivelacesso'];
     }
 
     if(empty($_POST['username'])){
@@ -31,7 +31,7 @@ if(empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
 
         
         if (mysqli_num_rows($result) > 0) {
-            if ($nivel == 3) {
+            if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3) {
                 echo '<link rel="stylesheet" href="bootstrap.css">';
                 echo '<div class="alert alert-dismissible alert-danger">';
                 echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
@@ -43,7 +43,7 @@ if(empty($_SESSION['tipo_utilizador']) || $_SESSION['tipo_utilizador'] == 3){
                 echo '<strong>Erro!</strong> <a href="registarformulario.php" class="alert-link">Utilizador já existe</a></div>';
             }
         } else {
-            if ($nivel==3) {
+            if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3) {
                 $sql = "INSERT INTO utilizador (tipo_utilizador,nome, pass, email, telemovel, morada) VALUES ('$nivel','$nome', '$senha_encriptada', '$email', '$telemovel', '$morada')";
                 $result = mysqli_query($conn, $sql);
 

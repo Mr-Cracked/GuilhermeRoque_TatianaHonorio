@@ -3,8 +3,7 @@ include '../basedados/basedados.h';
 session_start();
 if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     
-    //feito para saber quantos docentes foram inseridos ao todo
-    $docentes = $_POST['docentes'];
+    
 
     $nome = $_POST['nome'];
     $vagas = $_POST['vagas'];
@@ -20,14 +19,17 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
             <strong>Erro!</strong> <a href="adicionarCursoformulario.php" class="alert-link">As datas têm de ser válidas!!!</div>';
     }
 
-    else if(count($docentes) <= 0 || empty($docentes)){
-
+    else if (!isset($_POST['docentes']) || count($_POST['docentes']) <= 0) {
+        
         echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-danger ">
             <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
             <strong>Erro!</strong> <a href="adicionarCursoformulario.php" class="alert-link">Insira docente(s)!!!</div>';
 
     }else{
+
+        //feito para saber quantos docentes foram inseridos ao todo
+        $docentes = $_POST['docentes'];
 
         $sql = "SELECT * FROM curso WHERE nome = '$nome'";
         $result = mysqli_query($conn, $sql);

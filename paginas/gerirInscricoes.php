@@ -36,6 +36,7 @@
                                 <th scope="col">Estado</th>
                                 <th scope="col">Ação</th>
                                 <th scope="col">Eliminar</th>
+                                <th scope="col">Editar</th>
                                 <th scope="col">Visualizar</th>
                             </tr>
                         </thead>
@@ -81,7 +82,9 @@
                                         <td><a href="RevocarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Revocar</a></td>
                                         <?php } ?>
                                     <td><a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Eliminar</a></td>
+                                    <td><a href="editarInscricaoformulario.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Editar</a></td>
                                     <td><a href="visualizarInscricao.php?id=<?php echo $row['id_utilizador'] ?>&id_curso=<?php echo $row['id_curso'] ?>">Visualizar</a></td>
+                                    
                                 </tr>
                                 <?php
                                 }

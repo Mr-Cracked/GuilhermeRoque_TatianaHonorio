@@ -15,7 +15,7 @@
             <div class="card-body">
                 <h4 class="card-title text-center">Perfil</h4>
                 As suas informações
-                <br>
+                <br>  
                 <form id="form1" name="form1" method="post" action="editarPerfilformulario.php">
                     <div class="form-group">
                         <label for="username">ID de Utilizador:</label>

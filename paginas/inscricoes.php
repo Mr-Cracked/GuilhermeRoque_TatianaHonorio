@@ -35,8 +35,8 @@
                                 <th scope="row"><?php echo $row['nome']; ?></th>
                                 <td><?php echo $row['descricao']; ?></td>
                                 <td><?php echo $row['estado']; ?></td>
-                                <td> <a href="editarInscricaoformulario.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Editar</a></td>
-                                <td> <a href="eliminarInscricao.php?id=<?php echo $row['id_utilizador']; ?>&id_curso=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
+                                <td> <a href="editarInscricaoformulario.php?id_curso=<?php echo $row['id_curso']; ?>">Editar</a></td>
+                                <td> <a href="eliminarInscricao.php?id_curso=<?php echo $row['id_curso']; ?>">Eliminar</a></td>
 
                             </tr>
                             <?php
