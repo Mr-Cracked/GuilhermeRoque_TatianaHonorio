@@ -16,12 +16,12 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] >= 1){
             echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-success">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong></strong> <a href="geririnscricoes.php" class="alert-link">Sucesso!!!</div>';
+            <strong></strong> <a href="cursos.php" class="alert-link">Sucesso!!!</div>';
         } else {
             echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-danger">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong></strong> <a href="geririnscricoes.php" class="alert-link">Erro ao editar!!!</div>';
+            <strong></strong> <a href="cursos.php" class="alert-link">Erro ao editar!!!</div>';
         }
     }
     else{

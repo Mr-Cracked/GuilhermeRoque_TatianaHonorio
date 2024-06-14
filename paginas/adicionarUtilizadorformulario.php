@@ -23,7 +23,6 @@
                             <?php
                             // Opções do nível de acesso
                             $opcoesNivelAcesso = array(
-                                "-1" => "Eliminado",
                                 "0" => "Por aceitar",
                                 "1" => "Aluno",
                                 "2" => "Docente",

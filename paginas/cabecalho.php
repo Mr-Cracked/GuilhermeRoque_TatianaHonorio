@@ -57,7 +57,7 @@
                                       <div class="dropdown-menu">
                                           <a class="dropdown-item" href="cursos.php">Cursos</a>
                                           <a class="dropdown-item" href="utilizadores.php">Utilizadores</a>
-                                          <a class="dropdown-item" href="geririnscricoes.php">inscricoes</a>
+                                          <a class="dropdown-item" href="geririnscricoes.php">Inscricoes</a>
                                       </div>
                                 </li>
                                 <li class="nav-item">
