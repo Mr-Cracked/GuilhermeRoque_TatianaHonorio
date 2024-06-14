@@ -21,7 +21,7 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     $sql = "SELECT * FROM utilizador WHERE id_utilizador = '$id_utilizador'";
     $result = mysqli_query($conn, $sql);
 
-    if(mysqli_affected_rows($conn) > 1){
+    if(mysqli_affected_rows($result) > 1){
         echo '<link rel="stylesheet" href="bootstrap.css">
                 <div class="alert alert-dismissible alert-danger">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

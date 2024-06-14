@@ -3,23 +3,29 @@ session_start();
 if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3) {
     include '../basedados/basedados.h';
 
+
+
     if (isset($_GET['id'])) {
+
         $id = $_GET['id'];
+
+        $sql_curso = "SELECT id_curso, COUNT(id_curso) as inscricoes FROM inscricao WHERE id_utilizador = '$id' AND estado = 1 GROUP BY id_curso";
+        $result_curso = mysqli_query($conn, $sql_curso);
+
         $sql = "DELETE FROM utilizador WHERE id_utilizador = '$id'";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
-            $sql = "SELECT id_curso, COUNT(id_curso) as vagas_preenchidas FROM inscricao GROUP BY id_curso";
-            $result = mysqli_query($conn, $sql);
+            
 
             if ($result) {
 
-                while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result_curso)) {
                     $id_curso = $row['id_curso'];
-                    $vagas_preenchidas = $row['vagas_preenchidas'];
+                    $inscricoes = $row['inscricoes'] == 0 ? 0: $row['inscricoes'];
 
-                    $sql = "UPDATE curso SET vagas_preenchidas = '$vagas_preenchidas' WHERE id_curso = '$id_curso'";
-                    $result = mysqli_query($conn, $ql);
+                    $sql = "UPDATE curso SET vagas_preenchidas = vagas_preenchidas - '$inscricoes' WHERE id_curso = '$id_curso'";
+                    $result = mysqli_query($conn, $sql);
                 }
 
                 if ($result) {

@@ -19,7 +19,14 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         <strong></strong> <a href="cursos.php" class="alert-link">Insira docentes!!!</div>';
         
-    }else{
+    }
+    if($data_fim <= $data_inic) {
+        echo '<link rel="stylesheet" href="bootstrap.css">
+            <div class="alert alert-dismissible alert-danger ">
+            <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+            <strong>Erro!</strong> <a href="cursos.php" class="alert-link">As datas têm de ser válidas!!!</div>';
+    }
+    else{
         $docentes = $_POST['docentes'];
         $sql = "UPDATE curso SET nome='$nome', descricao='$descricao', vagas='$vagas', data_inicio='$data_inic', data_fim='$data_fim',metodo_selecao='$metodo' WHERE id_curso='$id'";
         $result = mysqli_query($conn, $sql);
