@@ -18,7 +18,7 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
     $nome = $_POST['nome'];
     $id_utilizador = $_POST['id_utilizador'];
 
-    $sql = "SELECT * FROM utilizador WHERE id_utilizador = '$id_utilizador'";
+    $sql = "SELECT * FROM utilizador WHERE nome='$nome' AND id_utilizador != '$id_utilizador'";
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_affected_rows($result) > 1){

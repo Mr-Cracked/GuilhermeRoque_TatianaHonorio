@@ -2,22 +2,20 @@
 include '../basedados/basedados.h';
 session_start();
 if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] > 0){ 
-// Obter os dados do formulário
 
+    if (!empty($_POST['pass'])){
+        $existepass = true;
+        $senha_encriptada = md5($pass = $_POST['pass']);
+    }else{
+        $existepass = false;
+    }
+    $nome = $_POST['username'];
+    $email = $_POST['email'];
+    $telemovel = $_POST['telemovel'];
+    $morada = $_POST['morada'];
 
-if (!empty($_POST['pass'])){
-    $existepass = true;
-    $senha_encriptada = md5($pass = $_POST['pass']);
-}else{
-    $existepass = false;
-}
-$nome = $_POST['username'];
-$email = $_POST['email'];
-$telemovel = $_POST['telemovel'];
-$morada = $_POST['morada'];
-
-$sql_nomes = "SELECT * FROM utilizador WHERE nome='$nome'";
-$result_nomes = mysqli_query($conn, $sql_nomes);
+    $sql_nomes = "SELECT * FROM utilizador WHERE nome='$nome' AND id_utilizador != '$_SESSION[id_utilizador]'";
+    $result_nomes = mysqli_query($conn, $sql_nomes);
 
     if($existepass){
         if (mysqli_num_rows($result_nomes) > 0) {
