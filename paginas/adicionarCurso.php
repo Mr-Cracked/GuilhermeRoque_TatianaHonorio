@@ -34,7 +34,7 @@ if (isset($_SESSION['tipo_utilizador']) && $_SESSION['tipo_utilizador'] == 3){
         $sql = "SELECT * FROM curso WHERE nome = '$nome'";
         $result = mysqli_query($conn, $sql);
 
-        if(!$result){
+        if(mysqli_num_rows($result)>0){
 
             echo '<link rel="stylesheet" href="bootstrap.css">
             <div class="alert alert-dismissible alert-danger">
